@@ -9,4 +9,5 @@ import com.demo.entity.ProductEntity;
 public interface ProductReponsitory extends JpaRepository<ProductEntity, Integer>{
 
 	ProductEntity findByProductId(int productId);
+	
 }

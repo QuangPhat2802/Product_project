@@ -2,48 +2,53 @@ package com.demo.serviceimpl;
 
 import java.util.List;
 
+import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.demo.dao.ProductReponsitory;
 import com.demo.entity.ProductEntity;
+import com.demo.model.ResponseDataModel;
 import com.demo.service.ProductService;
 
 @Service
 public class ProductServiceImpl implements ProductService {
 
+	public static final int ResponseCode_fail = 0;
+	public static final int ResponseCode_duplicate = 1;
+	public static final int ResponseCode_success = 200;
 	@Autowired
 	ProductReponsitory productRepo;
-	
+
 	@Override
 	public List<ProductEntity> getAllProduct() {
-		return productRepo.findAll() ;
-	}
-//	@Override
-//	public ResponseEntity<List<ProductEntity>> getAllProduct() {
-//		List<ProductEntity> listProduct = productRepo.findAll();
-//		if(listProduct.isEmpty()) {
-//			return new ResponseEntity<>(HttpStatus.NO_CONTENT);
-//		}
-//		return  new ResponseEntity<List<ProductEntity>>(HttpStatus.OK);
-//	}
-
-	@Override
-	public ProductEntity addProduct(ProductEntity productEntity) {
-	
-		return productRepo.saveAndFlush(productEntity) ;
+		return productRepo.findAll();
 	}
 
 	@Override
-	public ProductEntity updateProduct(ProductEntity productEntity) {
-		// TODO Auto-generated method stub
-		return productRepo.saveAndFlush(productEntity);
+	public ResponseDataModel addProduct(ProductEntity productEntity) {
+
+		ProductEntity product = productRepo.saveAndFlush(productEntity);
+		 return new ResponseDataModel(ResponseCode_success, "success", product);
 	}
 
 	@Override
-	public ProductEntity deleteProduct(int productId) {
-		// TODO Auto-generated method stub
-		return null;
+	public ResponseDataModel updateProduct(ProductEntity productEntity) {
+		ProductEntity product = productRepo.saveAndFlush(productEntity);
+		 return new ResponseDataModel(ResponseCode_success, "success", product);
+	}
+
+	@Override
+	public ResponseDataModel deleteProduct(int productId) {
+		int responseCode = ResponseCode_fail;
+		String responseMessage = StringUtils.EMPTY;
+		ProductEntity product = productRepo.findByProductId(productId);
+		if(product!= null) {
+			productRepo.deleteById(productId);
+			responseCode = ResponseCode_success;
+			responseMessage = "delete is success";
+		}
+		return new ResponseDataModel(responseCode,responseMessage);
 	}
 
 	@Override
@@ -51,6 +56,4 @@ public class ProductServiceImpl implements ProductService {
 		return productRepo.findByProductId(productId);
 	}
 
-	
-	
 }

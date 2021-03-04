@@ -3,16 +3,17 @@ package com.demo.service;
 import java.util.List;
 
 import com.demo.entity.ProductEntity;
+import com.demo.model.ResponseDataModel;
 
 public interface ProductService {
 
 	List<ProductEntity> getAllProduct();
 	
-	ProductEntity addProduct(ProductEntity productEntity);
+	ResponseDataModel addProduct(ProductEntity productEntity);
 	
-	ProductEntity updateProduct(ProductEntity productEntity);
+	ResponseDataModel updateProduct(ProductEntity productEntity);
 	
-	ProductEntity deleteProduct(int productId);
+	ResponseDataModel deleteProduct(int productId);
 	
 	ProductEntity findByProductId(int productId);
 }
