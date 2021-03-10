@@ -40,10 +40,8 @@ public class ProductController {
 	public ResponseDataModel editProduct(ProductEntity productEntity) {
 		return productService.updateProduct(productEntity);
 	}
-	
 	@DeleteMapping("/delete/{id}")
-	public ResponseDataModel deleteProduct(@PathVariable(name = "id") Integer productId) {
-		
+	public ResponseDataModel deleteProduct(@PathVariable(name = "id") Integer productId) {		
 		return productService.deleteProduct(productId);
 	}
 }

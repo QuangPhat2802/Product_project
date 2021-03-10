@@ -29,13 +29,14 @@ public class ProductServiceImpl implements ProductService {
 	public ResponseDataModel addProduct(ProductEntity productEntity) {
 
 		ProductEntity product = productRepo.saveAndFlush(productEntity);
-		 return new ResponseDataModel(ResponseCode_success, "success", product);
+		return new ResponseDataModel(ResponseCode_success, "success", product);
+		
 	}
 
 	@Override
 	public ResponseDataModel updateProduct(ProductEntity productEntity) {
 		ProductEntity product = productRepo.saveAndFlush(productEntity);
-		 return new ResponseDataModel(ResponseCode_success, "success", product);
+		return new ResponseDataModel(ResponseCode_success, "success", product);
 	}
 
 	@Override
@@ -43,12 +44,12 @@ public class ProductServiceImpl implements ProductService {
 		int responseCode = ResponseCode_fail;
 		String responseMessage = StringUtils.EMPTY;
 		ProductEntity product = productRepo.findByProductId(productId);
-		if(product!= null) {
+		if (product != null) {
 			productRepo.deleteById(productId);
 			responseCode = ResponseCode_success;
 			responseMessage = "delete is success";
 		}
-		return new ResponseDataModel(responseCode,responseMessage);
+		return new ResponseDataModel(responseCode, responseMessage);
 	}
 
 	@Override
