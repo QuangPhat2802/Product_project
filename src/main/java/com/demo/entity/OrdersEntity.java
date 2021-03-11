@@ -18,16 +18,15 @@ public class OrdersEntity {
 	@Column(name = "idcarts")
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int cartsId;
-	
+
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "customer_id", referencedColumnName = "customer_id")
 	private CustomerEntity customerEntity;
-				
+
 	@Column(name = "subtotal")
-	private double subTotal;
-	
+	private double totalPrice;
+
 	public OrdersEntity() {
-		// TODO Auto-generated constructor stub
 	}
 
 	public int getCartsId() {
@@ -46,14 +45,12 @@ public class OrdersEntity {
 		this.customerEntity = customerEntity;
 	}
 
-	public double getSubTotal() {
-		return subTotal;
+	public double getTotalPrice() {
+		return totalPrice;
 	}
 
-	public void setSubTotal(double subTotal) {
-		this.subTotal = subTotal;
+	public void setTotalPrice(double totalPrice) {
+		this.totalPrice = totalPrice;
 	}
-	
-	
-	
+
 }

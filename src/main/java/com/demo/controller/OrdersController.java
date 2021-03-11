@@ -6,7 +6,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.demo.entity.OrdersDetailsEntity;
+import com.demo.entity.OrdersEntity;
 import com.demo.exception.ProductTransactionException;
+import com.demo.model.ResponseDataModel;
 import com.demo.service.OrdersService;
 
 @RestController
@@ -17,8 +19,12 @@ public class OrdersController {
 	OrdersService ordersService;
 	
 	@PostMapping("/api/add")
-	public OrdersDetailsEntity addItems(OrdersDetailsEntity ordersEntity) throws ProductTransactionException {
+	public OrdersDetailsEntity addItems(OrdersDetailsEntity ordersDetailsEntity) throws ProductTransactionException {
+		return ordersService.addItems(ordersDetailsEntity);
+	}
+	@PostMapping("api/confirm")
+	public ResponseDataModel confirmOrders(OrdersEntity ordersEntity) {
 		
-		return ordersService.addItems(ordersEntity);
+		return ordersService.confirmOrders(ordersEntity);
 	}
 }
