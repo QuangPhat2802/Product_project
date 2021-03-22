@@ -1,0 +1,57 @@
+2021-03-12 17:37:35.560  INFO 15548 --- [main] c.demo.config.ProductProjectApplication  : Starting ProductProjectApplication using Java 15.0.2 on DESKTOP-TAISKLG with PID 15548 (C:\Users\MRH\eclipse-workspace\Product_Project\target\classes started by MRH in C:\Users\MRH\eclipse-workspace\Product_Project)
+2021-03-12 17:37:35.563  INFO 15548 --- [main] c.demo.config.ProductProjectApplication  : No active profile set, falling back to default profiles: default
+2021-03-12 17:37:35.966  INFO 15548 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2021-03-12 17:37:36.019  INFO 15548 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 46 ms. Found 4 JPA repository interfaces.
+2021-03-12 17:37:36.594  INFO 15548 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8867 (http)
+2021-03-12 17:37:36.603  INFO 15548 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2021-03-12 17:37:36.604  INFO 15548 --- [main] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.43]
+2021-03-12 17:37:36.699  INFO 15548 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2021-03-12 17:37:36.699  INFO 15548 --- [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1079 ms
+2021-03-12 17:37:36.862 DEBUG 15548 --- [main] j.LocalContainerEntityManagerFactoryBean : Building JPA container EntityManagerFactory for persistence unit 'default'
+2021-03-12 17:37:36.878  INFO 15548 --- [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2021-03-12 17:37:36.926  INFO 15548 --- [main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 5.4.28.Final
+2021-03-12 17:37:37.033  INFO 15548 --- [main] o.hibernate.annotations.common.Version   : HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
+2021-03-12 17:37:37.118  INFO 15548 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2021-03-12 17:37:37.122  WARN 15548 --- [main] com.zaxxer.hikari.util.DriverDataSource  : Registered driver with driverClassName=com.mysql.jdbc.Driver was not found, trying direct instantiation.
+2021-03-12 17:37:37.267  INFO 15548 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2021-03-12 17:37:37.279  INFO 15548 --- [main] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.MySQLDialect
+2021-03-12 17:37:37.515  INFO 15548 --- [main] org.hibernate.search.engine.Version      : HSEARCH000034: Hibernate Search 5.9.2.Final
+2021-03-12 17:37:37.799  INFO 15548 --- [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2021-03-12 17:37:37.862  INFO 15548 --- [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2021-03-12 17:37:37.982 DEBUG 15548 --- [main] tor$SharedEntityManagerInvocationHandler : Creating new EntityManager for shared EntityManager invocation
+2021-03-12 17:37:38.023 DEBUG 15548 --- [main] tor$SharedEntityManagerInvocationHandler : Creating new EntityManager for shared EntityManager invocation
+2021-03-12 17:37:38.073 DEBUG 15548 --- [main] tor$SharedEntityManagerInvocationHandler : Creating new EntityManager for shared EntityManager invocation
+2021-03-12 17:37:38.128 DEBUG 15548 --- [main] tor$SharedEntityManagerInvocationHandler : Creating new EntityManager for shared EntityManager invocation
+2021-03-12 17:37:38.218 DEBUG 15548 --- [main] tor$SharedEntityManagerInvocationHandler : Creating new EntityManager for shared EntityManager invocation
+2021-03-12 17:37:38.219 DEBUG 15548 --- [main] tor$SharedEntityManagerInvocationHandler : Creating new EntityManager for shared EntityManager invocation
+2021-03-12 17:37:38.232 DEBUG 15548 --- [main] o.h.e.t.internal.TransactionImpl         : On TransactionImpl creation, JpaCompliance#isJpaTransactionComplianceEnabled == false
+2021-03-12 17:37:38.235 DEBUG 15548 --- [main] tor$SharedEntityManagerInvocationHandler : Creating new EntityManager for shared EntityManager invocation
+2021-03-12 17:37:38.285 DEBUG 15548 --- [main] tor$SharedEntityManagerInvocationHandler : Creating new EntityManager for shared EntityManager invocation
+2021-03-12 17:37:38.287 DEBUG 15548 --- [main] tor$SharedEntityManagerInvocationHandler : Creating new EntityManager for shared EntityManager invocation
+2021-03-12 17:37:38.302 DEBUG 15548 --- [main] tor$SharedEntityManagerInvocationHandler : Creating new EntityManager for shared EntityManager invocation
+2021-03-12 17:37:38.303 DEBUG 15548 --- [main] tor$SharedEntityManagerInvocationHandler : Creating new EntityManager for shared EntityManager invocation
+2021-03-12 17:37:38.388  WARN 15548 --- [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2021-03-12 17:37:38.472  INFO 15548 --- [main] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 'applicationTaskExecutor'
+2021-03-12 17:37:38.669  INFO 15548 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8867 (http) with context path ''
+2021-03-12 17:37:38.676  INFO 15548 --- [main] c.demo.config.ProductProjectApplication  : Started ProductProjectApplication in 3.413 seconds (JVM running for 4.047)
+2021-03-12 17:37:46.158  INFO 15548 --- [http-nio-8867-exec-2] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2021-03-12 17:37:46.159  INFO 15548 --- [http-nio-8867-exec-2] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2021-03-12 17:37:46.160  INFO 15548 --- [http-nio-8867-exec-2] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
+2021-03-12 17:37:46.172 DEBUG 15548 --- [http-nio-8867-exec-2] o.j.s.OpenEntityManagerInViewInterceptor : Opening JPA EntityManager in OpenEntityManagerInViewInterceptor
+2021-03-12 17:37:46.206 DEBUG 15548 --- [http-nio-8867-exec-2] o.s.orm.jpa.JpaTransactionManager        : Found thread-bound EntityManager [SessionImpl(696664336<open>)] for JPA transaction
+2021-03-12 17:37:46.206 DEBUG 15548 --- [http-nio-8867-exec-2] o.s.orm.jpa.JpaTransactionManager        : Creating new transaction with name [com.demo.serviceimpl.ProductServiceImpl.addProduct]: PROPAGATION_REQUIRED,ISOLATION_DEFAULT
+2021-03-12 17:37:46.207 DEBUG 15548 --- [http-nio-8867-exec-2] o.h.e.t.internal.TransactionImpl         : On TransactionImpl creation, JpaCompliance#isJpaTransactionComplianceEnabled == false
+2021-03-12 17:37:46.207 DEBUG 15548 --- [http-nio-8867-exec-2] o.h.e.t.internal.TransactionImpl         : begin
+2021-03-12 17:37:46.209 DEBUG 15548 --- [http-nio-8867-exec-2] o.s.orm.jpa.JpaTransactionManager        : Exposing JPA transaction as JDBC [org.springframework.orm.jpa.vendor.HibernateJpaDialect$HibernateConnectionHandle@46e5db3]
+2021-03-12 17:37:46.214 DEBUG 15548 --- [http-nio-8867-exec-2] o.s.orm.jpa.JpaTransactionManager        : Found thread-bound EntityManager [SessionImpl(696664336<open>)] for JPA transaction
+2021-03-12 17:37:46.215 DEBUG 15548 --- [http-nio-8867-exec-2] o.s.orm.jpa.JpaTransactionManager        : Participating in existing transaction
+2021-03-12 17:37:46.259 DEBUG 15548 --- [http-nio-8867-exec-2] o.s.orm.jpa.JpaTransactionManager        : Initiating transaction commit
+2021-03-12 17:37:46.259 DEBUG 15548 --- [http-nio-8867-exec-2] o.s.orm.jpa.JpaTransactionManager        : Committing JPA transaction on EntityManager [SessionImpl(696664336<open>)]
+2021-03-12 17:37:46.259 DEBUG 15548 --- [http-nio-8867-exec-2] o.h.e.t.internal.TransactionImpl         : committing
+2021-03-12 17:37:46.264 DEBUG 15548 --- [http-nio-8867-exec-2] o.s.orm.jpa.JpaTransactionManager        : Not closing pre-bound JPA EntityManager after transaction
+2021-03-12 17:37:46.314 DEBUG 15548 --- [http-nio-8867-exec-2] o.j.s.OpenEntityManagerInViewInterceptor : Closing JPA EntityManager in OpenEntityManagerInViewInterceptor
+2021-03-12 17:38:56.150  INFO 15548 --- [RMI TCP Connection(4)-127.0.0.1] inMXBeanRegistrar$SpringApplicationAdmin : Application shutdown requested.
+2021-03-12 17:38:56.166  INFO 15548 --- [RMI TCP Connection(4)-127.0.0.1] o.s.s.concurrent.ThreadPoolTaskExecutor  : Shutting down ExecutorService 'applicationTaskExecutor'
+2021-03-12 17:38:56.167  INFO 15548 --- [RMI TCP Connection(4)-127.0.0.1] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2021-03-12 17:38:56.172  INFO 15548 --- [RMI TCP Connection(4)-127.0.0.1] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2021-03-12 17:38:56.183  INFO 15548 --- [RMI TCP Connection(4)-127.0.0.1] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.

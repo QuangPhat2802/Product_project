@@ -4,7 +4,9 @@ import java.util.List;
 
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.demo.dao.ProductReponsitory;
 import com.demo.entity.ProductEntity;
@@ -12,6 +14,8 @@ import com.demo.model.ResponseDataModel;
 import com.demo.service.ProductService;
 
 @Service
+@Transactional
+
 public class ProductServiceImpl implements ProductService {
 
 	public static final int ResponseCode_fail = 0;
@@ -30,7 +34,7 @@ public class ProductServiceImpl implements ProductService {
 
 		ProductEntity product = productRepo.saveAndFlush(productEntity);
 		return new ResponseDataModel(ResponseCode_success, "success", product);
-		
+
 	}
 
 	@Override

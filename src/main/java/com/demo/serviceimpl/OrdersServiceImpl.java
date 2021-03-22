@@ -5,7 +5,6 @@ import java.util.List;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.demo.dao.BillReponsitory;
@@ -49,7 +48,7 @@ public class OrdersServiceImpl implements OrdersService {
 	}
 
 	@Override
-	@Transactional(propagation = Propagation.REQUIRES_NEW)
+	@Transactional(rollbackFor = Throwable.class)
 	public ResponseDataModel confirmOrders(OrdersEntity ordersEntity) {
 		int responseCode = 0;
 		String responseMessage = StringUtils.EMPTY;
@@ -61,7 +60,7 @@ public class OrdersServiceImpl implements OrdersService {
 		}
 		ordersEntity.setTotalPrice(totalPrice);
 		try {
-			OrdersEntity data = billRepo.saveAndFlush(ordersEntity);
+			billRepo.saveAndFlush(ordersEntity);
 			responseCode = 100;
 			responseMessage = "success";
 		} catch (Exception e) {
