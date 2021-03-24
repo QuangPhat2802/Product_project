@@ -21,7 +21,6 @@ public class CustomUserDetails implements UserDetails {
 		this.userEntity = userEntity;
 	}
 
-
 	@Override
 	public Collection<? extends GrantedAuthority> getAuthorities() {
 		// TODO Auto-generated method stub

@@ -26,10 +26,10 @@ public class ProductController {
 
 	@GetMapping
 	public List<ProductEntity> getList() {
+
 		return productService.getAllProduct();
 	}
 
-	
 	@GetMapping("/find/{id}")
 	public ProductEntity findByProductId(@PathVariable(name = "id") Integer productId) {
 		return productService.findByProductId(productId);

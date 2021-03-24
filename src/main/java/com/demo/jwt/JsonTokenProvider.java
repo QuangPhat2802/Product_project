@@ -21,6 +21,11 @@ import lombok.extern.slf4j.Slf4j;
 @Slf4j
 public class JsonTokenProvider implements Serializable {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -7720246322569312735L;
+
 	@Value("${jwt.secret}")
 	private String secret;
 
@@ -30,8 +35,7 @@ public class JsonTokenProvider implements Serializable {
 
 	/**
 	 * 
-	 * @param customUserDetails
-	 * create jwt from user
+	 * @param customUserDetails create jwt from user
 	 * @return
 	 */
 	public String generateToken(CustomUserDetails customUserDetails) {
