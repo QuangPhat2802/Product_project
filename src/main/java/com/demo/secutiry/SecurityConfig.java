@@ -20,7 +20,7 @@ import org.springframework.security.web.authentication.UsernamePasswordAuthentic
 
 import com.demo.jwt.ApiKeyAuthFilter;
 import com.demo.jwt.JwtRequestFilter;
-import com.demo.serviceimpl.UserService;
+import com.demo.serviceimpl.UserServiceDetails;
 
 @Configuration
 @EnableWebSecurity
@@ -31,7 +31,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 	JwtRequestFilter jwtRequestFilter;
 
 	@Autowired
-	UserService jwtUservice;
+	UserServiceDetails jwtUservice;
 
 	@Value("{myapp.http.auth-token-header-name}")
 	private String principalRequestHeader;
@@ -48,12 +48,6 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
 
-//		http.authorizeRequests()
-//		.antMatchers("/**/*", "/**/**/*")
-//		.permitAll()
-//		.and() // Disable CRSF check
-//			.csrf().disable();
-
 		ApiKeyAuthFilter apiKeysFilter = new ApiKeyAuthFilter(principalRequestHeader);
 		apiKeysFilter.setAuthenticationManager(new AuthenticationManager() {
 
@@ -67,12 +61,13 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 				System.out.println(authentication);
 				return authentication;
 			}
+
 		});
 
 		http.antMatcher("/api/login").csrf().disable().sessionManagement()
 				.sessionCreationPolicy(SessionCreationPolicy.STATELESS).and().addFilter(apiKeysFilter)
 				.authorizeRequests().anyRequest().authenticated();
-		
+
 //		http.csrf().disable().authorizeRequests().antMatchers("/api/login").permitAll().anyRequest().authenticated();
 		http.addFilterBefore(jwtRequestFilter, UsernamePasswordAuthenticationFilter.class);
 	}

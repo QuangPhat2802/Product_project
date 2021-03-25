@@ -11,7 +11,7 @@ import com.demo.entity.UsersEntity;
 import com.demo.secutiry.CustomUserDetails;
 
 @Service
-public class UserService implements UserDetailsService {
+public class UserServiceDetails implements UserDetailsService {
 
 	@Autowired
 	UsersRepository usersRepo;
