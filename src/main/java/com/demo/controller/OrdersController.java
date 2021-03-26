@@ -12,19 +12,31 @@ import com.demo.model.ResponseDataModel;
 import com.demo.service.OrdersService;
 
 @RestController
-@RequestMapping("/orders")
+@RequestMapping("/api")
 public class OrdersController {
 
 	@Autowired
 	OrdersService ordersService;
-	
-	@PostMapping("/api/add")
+
+	/**
+	 * 
+	 * @param ordersDetailsEntity
+	 * @return
+	 * @throws ProductTransactionException
+	 */
+	@PostMapping("/orders/add")
 	public OrdersDetailsEntity addItems(OrdersDetailsEntity ordersDetailsEntity) throws ProductTransactionException {
 		return ordersService.addItems(ordersDetailsEntity);
 	}
-	@PostMapping("api/confirm")
+
+	/**
+	 * 
+	 * @param ordersEntity
+	 * @return
+	 */
+	@PostMapping("/orders/confirm")
 	public ResponseDataModel confirmOrders(OrdersEntity ordersEntity) {
-		
+
 		return ordersService.confirmOrders(ordersEntity);
 	}
 }

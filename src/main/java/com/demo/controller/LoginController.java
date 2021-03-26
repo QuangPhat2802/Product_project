@@ -45,6 +45,12 @@ public class LoginController {
 
 	}
 
+	/**
+	 * 
+	 * @param usersEntity
+	 * @return
+	 * @throws Exception
+	 */
 	@PostMapping("/add")
 	public ResponseDataModel addUser(@Valid @RequestBody UsersEntity usersEntity) throws Exception {
 		return userService.addUser(usersEntity);

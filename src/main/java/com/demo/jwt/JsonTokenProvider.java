@@ -54,7 +54,7 @@ public class JsonTokenProvider implements Serializable {
 		Claims clams = Jwts.parser().setSigningKey(secret).parseClaimsJws(token).getBody();
 		return clams.getSubject();
 	}
-
+	
 	/**
 	 * 
 	 * @param authToken
