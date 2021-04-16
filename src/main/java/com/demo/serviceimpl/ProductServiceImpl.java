@@ -5,6 +5,7 @@ import java.util.List;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.demo.dao.ProductReponsitory;
@@ -13,7 +14,6 @@ import com.demo.model.ResponseDataModel;
 import com.demo.service.ProductService;
 
 @Service
-@Transactional
 
 public class ProductServiceImpl implements ProductService {
 
@@ -24,6 +24,7 @@ public class ProductServiceImpl implements ProductService {
 	ProductReponsitory productRepo;
 
 	@Override
+	@Transactional(propagation = Propagation.REQUIRED)
 	public List<ProductEntity> getAllProduct() {
 		return productRepo.findAll();
 	}
@@ -59,4 +60,6 @@ public class ProductServiceImpl implements ProductService {
 	public ProductEntity findByProductId(int productId) {
 		return productRepo.findByProductId(productId);
 	}
+
+	
 }

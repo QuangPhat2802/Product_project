@@ -26,7 +26,7 @@ public class ProductController {
 
 	@GetMapping("/list")
 	public List<ProductEntity> getList() {
-
+		
 		return productService.getAllProduct();
 	}
 

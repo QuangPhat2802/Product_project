@@ -16,4 +16,5 @@ public interface ProductService {
 	ResponseDataModel deleteProduct(int productId);
 
 	ProductEntity findByProductId(int productId);
+
 }

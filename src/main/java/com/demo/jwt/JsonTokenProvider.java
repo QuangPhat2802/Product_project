@@ -15,52 +15,34 @@ import io.jsonwebtoken.ExpiredJwtException;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
 import io.jsonwebtoken.UnsupportedJwtException;
-import lombok.extern.slf4j.Slf4j;
 
 @Component
-@Slf4j
 public class JsonTokenProvider implements Serializable {
 
 	/**
 	 * 
 	 */
-	private static final long serialVersionUID = -7720246322569312735L;
+	private static final long serialVersionUID = 1L;
 
-	@Value("${jwt.secret}")
-	private String secret;
+	private static final long JSON_TOKEN_VALIDITY = 604800000L;
 
 	private static final Logger log = LoggerFactory.getLogger(JsonTokenProvider.class);
 
-	private static final Long JWT_TOKEN_VALIDITY = 604800000L;
+	@Value("jwt.secret")
+	private String secret;
 
-	/**
-	 * 
-	 * @param customUserDetails create jwt from user
-	 * @return
-	 */
-	public String generateToken(CustomUserDetails customUserDetails) {
-		Date dateNow = new Date();
-		Date expiryDate = new Date(dateNow.getTime() + JWT_TOKEN_VALIDITY);
-		return Jwts.builder().setSubject(customUserDetails.getUsername()).setIssuedAt(dateNow).setExpiration(expiryDate)
+	public String generateToken(CustomUserDetails customerUserDetails) {
+		Date date = new Date();
+		Date expiryDate = new Date(date.getTime() + JSON_TOKEN_VALIDITY);
+		return Jwts.builder().setSubject(customerUserDetails.getUsername()).setIssuedAt(date).setExpiration(expiryDate)
 				.signWith(SignatureAlgorithm.HS256, secret).compact();
 	}
 
-	/**
-	 * 
-	 * @param token
-	 * @return
-	 */
 	public String getUserNameFromToken(String token) {
-		Claims clams = Jwts.parser().setSigningKey(secret).parseClaimsJws(token).getBody();
-		return clams.getSubject();
-	}
-	
-	/**
-	 * 
-	 * @param authToken
-	 * @return
-	 */
 
+		Claims claims = Jwts.parser().setSigningKey(secret).parseClaimsJws(token).getBody();
+		return claims.getSubject();
+	}
 	public boolean validateToken(String authToken) {
 		try {
 			Jwts.parser().setSigningKey(secret).parseClaimsJws(authToken);
@@ -74,5 +56,4 @@ public class JsonTokenProvider implements Serializable {
 		}
 		return false;
 	}
-
 }

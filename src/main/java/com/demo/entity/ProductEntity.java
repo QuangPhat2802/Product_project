@@ -41,6 +41,14 @@ public class ProductEntity {
 		// TODO Auto-generated constructor stub
 	}
 
+	public ProductEntity( String productName,int quantity , String description, double price) {
+		
+		this.productName = productName;
+		this.description = description;
+		this.quantity = quantity;
+		this.price = price;
+	}
+
 	public int getQuantity() {
 		return quantity;
 	}
@@ -88,5 +96,5 @@ public class ProductEntity {
 	public void setOrdersDetailsEntity(Set<OrdersDetailsEntity> ordersDetailsEntity) {
 		this.ordersDetailsEntity = ordersDetailsEntity;
 	}
-	
+
 }

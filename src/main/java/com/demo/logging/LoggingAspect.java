@@ -1,4 +1,4 @@
-package com.demo.logging;
+ package com.demo.logging;
 
 import java.util.Arrays;
 
@@ -13,8 +13,11 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Component;
 
+import lombok.extern.log4j.Log4j;
+
 @Aspect
 @Component
+@Log4j
 public class LoggingAspect {
 
 	private final Logger LOGGER = LoggerFactory.getLogger(this.getClass());
@@ -31,7 +34,7 @@ public class LoggingAspect {
 	}
 
 	@Pointcut("within(com.demo..*)"
-			+ " || within(com.demo.serviceimpl..*)"
+			+ " || within(com.demo.serviceimpl.ProductServiceImpl.getAllProduct*)"
 			+ " || within(com.demo.controller..*)")
 	public void applicationPackagePointCut() {
 
@@ -42,13 +45,13 @@ public class LoggingAspect {
 //		LOGGER.debug("+++++++++++++++ LoggingAspect.logBeforeAllMethods(): " + joinPoint.getSignature().getName());
 
 		if (LOGGER.isDebugEnabled()) {
-			LOGGER.debug("Enter: {}.{}() with argument[s] = {}" + joinPoint.getSignature().getDeclaringTypeName()
+			LOGGER.info("Enter: {}.{}() with argument[s] = {}" + joinPoint.getSignature().getDeclaringTypeName()
 					+ joinPoint.getSignature().getName(), Arrays.toString(joinPoint.getArgs()));
 		}
 		try {
 			Object result = joinPoint.proceed();
 			if (LOGGER.isDebugEnabled()) {
-				LOGGER.debug("Enter: {}.{}() with argument[s] = {}" + joinPoint.getSignature().getDeclaringTypeName()
+				LOGGER.info("Enter: {}.{}() with argument[s] = {}" + joinPoint.getSignature().getDeclaringTypeName()
 						+ joinPoint.getSignature().getName(), result);
 			}
 			return result;
@@ -62,7 +65,7 @@ public class LoggingAspect {
 
 	@After("execution(* com.demo.serviceimpl.ProductServiceImpl.getAllProduct(..))")
 	public void loggerAfterGetProduct(JoinPoint joinPoint) {
-		LOGGER.debug("+++++++++++++++ LoggingAspect.logBeforeGetProduct(): " + joinPoint.getSignature().getName());
+		LOGGER.info("+++++++++++++++ LoggingAspect.logBeforeGetProduct(): " + joinPoint.getSignature().getName());
 	}
 
 	@Before("execution(* com.demo.serviceimpl.ProductServiceImpl.findByProductId(..))")

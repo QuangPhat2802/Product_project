@@ -11,11 +11,15 @@ import com.demo.entity.UsersEntity;
 
 public class CustomUserDetails implements UserDetails {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	UsersEntity userEntity;
+
 	public CustomUserDetails() {
 		// TODO Auto-generated constructor stub
 	}
-	
 
 	public CustomUserDetails(UsersEntity userEntity) {
 		this.userEntity = userEntity;

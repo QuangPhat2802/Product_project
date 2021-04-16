@@ -41,13 +41,17 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 //				.sessionCreationPolicy(SessionCreationPolicy.STATELESS).and().addFilter(apiKeysFilter)
 //				.authorizeRequests().anyRequest().authenticated();
 
-		http.csrf().disable().authorizeRequests().antMatchers("/api/login").permitAll().anyRequest().authenticated();
+		http.csrf().disable().authorizeRequests().antMatchers("/api/login").permitAll().antMatchers("/api/list")
+				.permitAll().antMatchers("/h2-console/**").permitAll().antMatchers("/h2-console/**").permitAll()
+				.antMatchers("/api/product/add").permitAll()
+				.anyRequest().authenticated();
 		http.addFilterBefore(jwtRequestFilter, UsernamePasswordAuthenticationFilter.class);
 	}
 
 	@Override
 	public void configure(WebSecurity web) throws Exception {
 		web.ignoring().antMatchers("/v3/api-docs/**", "/swagger-ui.html", "/swagger-ui/**");
+		web.ignoring().antMatchers("/h2-console");
 	}
 
 	@Bean
@@ -59,4 +63,5 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 	public AuthenticationManager authenticationManagerBean() throws Exception {
 		return super.authenticationManagerBean();
 	}
+
 }
