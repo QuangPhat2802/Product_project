@@ -5,11 +5,11 @@ public class ResponseDataModel {
 	private int responseCode;
 	private String responseMessage;
 	private Object data;
-	
+
 	public ResponseDataModel() {
 		// TODO Auto-generated constructor stub
 	}
-	
+
 	public ResponseDataModel(int responseCode, String responseMessage) {
 		this.responseCode = responseCode;
 		this.responseMessage = responseMessage;
@@ -44,5 +44,5 @@ public class ResponseDataModel {
 	public void setData(Object data) {
 		this.data = data;
 	}
-	
+
 }

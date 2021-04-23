@@ -10,6 +10,11 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import javax.validation.constraints.DecimalMin;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
+
+import org.hibernate.validator.constraints.NotEmpty;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
@@ -22,15 +27,22 @@ public class ProductEntity {
 	private int productId;
 
 	@Column(name = "product_Name")
+	@NotEmpty(message = "product name field can not null")
+	@Size(max = 5, message = "product name should be less than 5")
 	private String productName;
 
 	@Column(name = "description")
+	@NotEmpty(message = "description field can not null")
 	private String description;
 
 	@Column(name = "quantity")
+	@NotNull(message = "quantity field can not null")
+	@DecimalMin(value = "1", message = "quantity must be a number whose value must be hight or equal to 1")
 	private int quantity;
 
 	@Column(name = "price")
+	@NotNull(message = "price field can not null")
+	@DecimalMin(value = "1000", message = "quantity must be a number whose value must be hight or equal to 1000")
 	private double price;
 
 	@JsonIgnore
@@ -41,8 +53,8 @@ public class ProductEntity {
 		// TODO Auto-generated constructor stub
 	}
 
-	public ProductEntity( String productName,int quantity , String description, double price) {
-		
+	public ProductEntity(String productName, int quantity, String description, double price) {
+
 		this.productName = productName;
 		this.description = description;
 		this.quantity = quantity;

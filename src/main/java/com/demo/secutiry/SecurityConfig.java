@@ -34,7 +34,6 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 		auth.userDetailsService(jwtUservice).passwordEncoder(passwordEncoder());
 
 	}
-
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
 //		http.antMatcher("/api/login").csrf().disable().sessionManagement()

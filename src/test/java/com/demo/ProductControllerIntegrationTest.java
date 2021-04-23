@@ -32,6 +32,7 @@ import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.MvcResult;
 
 import com.demo.controller.ProductController;
+import com.demo.dao.ProductReponsitory;
 import com.demo.entity.ProductEntity;
 import com.demo.model.ResponseDataModel;
 import com.demo.serviceimpl.ProductServiceImpl;
@@ -40,7 +41,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 
 @SpringBootTest
 @AutoConfigureMockMvc
-@ActiveProfiles("test")
+@ActiveProfiles("dev")
 public class ProductControllerIntegrationTest {
 
 	@Autowired
@@ -54,6 +55,9 @@ public class ProductControllerIntegrationTest {
 
 	@Autowired
 	private ObjectMapper objectMapper;
+
+	@MockBean
+	private ProductReponsitory productRepo;
 
 	private ProductEntity productEntity;
 
@@ -77,11 +81,14 @@ public class ProductControllerIntegrationTest {
 
 	@Test
 	public void testAddProduct() throws Exception {
-		productEntity = new ProductEntity("phat", 1, "phat", 2);
+		productEntity = new ProductEntity("phat11", 1, "phat", 2);
+		Mockito.when(productService.addProduct(productEntity)).thenReturn(new ResponseDataModel(200, "success"));
 		String jsonRequest = objectMapper.writeValueAsString(productEntity);
-		MvcResult result = mvc.perform(post("/api/product/add").content(jsonRequest).content(MediaType.APPLICATION_JSON_VALUE)).andExpect(status().isOk()).andReturn();
+		MvcResult result = mvc.perform(post("/api/product/add").content(jsonRequest)
+				.contentType(MediaType.APPLICATION_JSON).accept(MediaType.APPLICATION_JSON)).andDo(print())
+				.andExpect(status().isOk()).andReturn();
 		String resultContent = result.getResponse().getContentAsString();
 		ResponseDataModel response = objectMapper.readValue(resultContent, ResponseDataModel.class);
 		Assert.assertEquals(200, response.getResponseCode());
-	}
+	} 
 }

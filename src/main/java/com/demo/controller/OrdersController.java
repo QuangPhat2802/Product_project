@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.demo.entity.OrdersDetailsEntity;
 import com.demo.entity.OrdersEntity;
-import com.demo.exception.ProductTransactionException;
+import com.demo.exception.RecordNotFoundException;
 import com.demo.model.ResponseDataModel;
 import com.demo.service.OrdersService;
 
@@ -22,10 +22,10 @@ public class OrdersController {
 	 * 
 	 * @param ordersDetailsEntity
 	 * @return
-	 * @throws ProductTransactionException
+	 * @throws RecordNotFoundException
 	 */
 	@PostMapping("/orders/add")
-	public OrdersDetailsEntity addItems(OrdersDetailsEntity ordersDetailsEntity) throws ProductTransactionException {
+	public OrdersDetailsEntity addItems(OrdersDetailsEntity ordersDetailsEntity) throws RecordNotFoundException {
 		return ordersService.addItems(ordersDetailsEntity);
 	}
 

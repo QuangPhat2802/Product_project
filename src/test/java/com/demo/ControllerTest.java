@@ -46,7 +46,7 @@ public class ControllerTest {
 		ProductEntity product = new ProductEntity();
 		product.setProductId(15);
 		product.setProductName("phat01");
-		product.setDescription("phat01");
+		product.setDescription("phat011");
 		product.setPrice(123);
 		product.setQuantity(123);
 

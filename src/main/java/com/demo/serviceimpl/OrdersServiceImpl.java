@@ -14,7 +14,7 @@ import com.demo.dao.ProductReponsitory;
 import com.demo.entity.OrdersDetailsEntity;
 import com.demo.entity.OrdersEntity;
 import com.demo.entity.ProductEntity;
-import com.demo.exception.ProductTransactionException;
+import com.demo.exception.RecordNotFoundException;
 import com.demo.model.ResponseDataModel;
 import com.demo.service.OrdersService;
 
@@ -34,12 +34,12 @@ public class OrdersServiceImpl implements OrdersService {
 	BillReponsitory billRepo;
 
 	@Override
-	public OrdersDetailsEntity addItems(OrdersDetailsEntity ordersDetailsEntity) throws ProductTransactionException {
+	public OrdersDetailsEntity addItems(OrdersDetailsEntity ordersDetailsEntity) throws RecordNotFoundException {
 
 		ProductEntity productEntity = productRepo
 				.findByProductId(ordersDetailsEntity.getProductEntity().getProductId());
 		if (ordersDetailsEntity.getQuantity() > productEntity.getQuantity()) {
-			throw new ProductTransactionException("dont add");
+			throw new RecordNotFoundException("dont add");
 		} else {
 			productEntity.setQuantity(productEntity.getQuantity() - ordersDetailsEntity.getQuantity());
 			ordersDetailsEntity.setPrice(productEntity.getPrice() * ordersDetailsEntity.getQuantity());

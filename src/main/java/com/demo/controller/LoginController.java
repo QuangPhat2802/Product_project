@@ -17,7 +17,7 @@ import com.demo.model.ResponseDataModel;
 import com.demo.secutiry.CustomUserDetails;
 import com.demo.service.UserService;
 
-@RestController
+@RestController  
 @RequestMapping(value = "/api")
 public class LoginController {
 

@@ -39,10 +39,10 @@ public class JsonTokenProvider implements Serializable {
 	}
 
 	public String getUserNameFromToken(String token) {
-
 		Claims claims = Jwts.parser().setSigningKey(secret).parseClaimsJws(token).getBody();
 		return claims.getSubject();
 	}
+	
 	public boolean validateToken(String authToken) {
 		try {
 			Jwts.parser().setSigningKey(secret).parseClaimsJws(authToken);

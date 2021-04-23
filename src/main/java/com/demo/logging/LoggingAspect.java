@@ -40,6 +40,7 @@ public class LoggingAspect {
 
 	}
 
+	
 	@Around("applicationPackagePointCut() && springBeanPointCut()")
 	public Object loggerBeforeAllMethods(ProceedingJoinPoint joinPoint) throws Throwable {
 //		LOGGER.debug("+++++++++++++++ LoggingAspect.logBeforeAllMethods(): " + joinPoint.getSignature().getName());
