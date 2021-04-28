@@ -108,5 +108,4 @@ public class ProductEntity {
 	public void setOrdersDetailsEntity(Set<OrdersDetailsEntity> ordersDetailsEntity) {
 		this.ordersDetailsEntity = ordersDetailsEntity;
 	}
-
 }

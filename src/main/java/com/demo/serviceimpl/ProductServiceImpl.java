@@ -57,9 +57,9 @@ public class ProductServiceImpl implements ProductService {
 	}
 
 	@Override
+	@Transactional(propagation = Propagation.REQUIRES_NEW)
 	public ProductEntity findByProductId(int productId) {
 		return productRepo.findByProductId(productId);
 	}
 
-	
 }

@@ -49,7 +49,6 @@ public class ControllerTest {
 		product.setDescription("phat011");
 		product.setPrice(123);
 		product.setQuantity(123);
-
 		when(productService.addProduct((ProductEntity) any(ProductEntity.class)))
 				.thenReturn(new ResponseDataModel(100, "complete"));
 
