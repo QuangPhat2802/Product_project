@@ -41,28 +41,28 @@ public class LoggingAspect {
 	}
 
 	
-	@Around("applicationPackagePointCut() && springBeanPointCut()")
-	public Object loggerBeforeAllMethods(ProceedingJoinPoint joinPoint) throws Throwable {
-//		LOGGER.debug("+++++++++++++++ LoggingAspect.logBeforeAllMethods(): " + joinPoint.getSignature().getName());
-
-		if (LOGGER.isDebugEnabled()) {
-			LOGGER.info("Enter: {}.{}() with argument[s] = {}" + joinPoint.getSignature().getDeclaringTypeName()
-					+ joinPoint.getSignature().getName(), Arrays.toString(joinPoint.getArgs()));
-		}
-		try {
-			Object result = joinPoint.proceed();
-			if (LOGGER.isDebugEnabled()) {
-				LOGGER.info("Enter: {}.{}() with argument[s] = {}" + joinPoint.getSignature().getDeclaringTypeName()
-						+ joinPoint.getSignature().getName(), result);
-			}
-			return result;
-		} catch (IllegalAccessException e) {
-			LOGGER.error("Illegal argument: {} in {}.{}()" + Arrays.toString(joinPoint.getArgs()),
-					joinPoint.getSignature().getDeclaringTypeName(), joinPoint.getSignature().getName());
-			throw e;
-		}
-		
-	}
+//	@Around("applicationPackagePointCut() && springBeanPointCut()")
+//	public Object loggerBeforeAllMethods(ProceedingJoinPoint joinPoint) throws Throwable {
+////		LOGGER.debug("+++++++++++++++ LoggingAspect.logBeforeAllMethods(): " + joinPoint.getSignature().getName());
+//
+//		if (LOGGER.isDebugEnabled()) {
+//			LOGGER.info("Enter: {}.{}() with argument[s] = {}" + joinPoint.getSignature().getDeclaringTypeName()
+//					+ joinPoint.getSignature().getName(), Arrays.toString(joinPoint.getArgs()));
+//		}
+//		try {
+//			Object result = joinPoint.proceed();
+//			if (LOGGER.isDebugEnabled()) {
+//				LOGGER.info("Enter: {}.{}() with argument[s] = {}" + joinPoint.getSignature().getDeclaringTypeName()
+//						+ joinPoint.getSignature().getName(), result);
+//			}
+//			return result;
+//		} catch (IllegalAccessException e) {
+//			LOGGER.error("Illegal argument: {} in {}.{}()" + Arrays.toString(joinPoint.getArgs()),
+//					joinPoint.getSignature().getDeclaringTypeName(), joinPoint.getSignature().getName());
+//			throw e;
+//		}
+//
+//	}
 
 	@After("execution(* com.demo.serviceimpl.ProductServiceImpl.getAllProduct(..))")
 	public void loggerAfterGetProduct(JoinPoint joinPoint) {
